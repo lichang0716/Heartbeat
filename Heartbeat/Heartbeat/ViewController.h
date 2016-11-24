@@ -10,6 +10,9 @@
 
 @interface ViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *currentValueLabel;
+@property (weak, nonatomic) IBOutlet UIButton *watchValueButton;
+- (IBAction)watchValue:(id)sender;
 
 @end
 

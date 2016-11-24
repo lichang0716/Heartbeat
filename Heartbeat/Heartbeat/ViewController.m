@@ -13,6 +13,8 @@
 @end
 
 @implementation ViewController
+@synthesize currentValueLabel = _currentValueLabel;
+@synthesize watchValueButton = _watchValueButton;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -26,4 +28,13 @@
 }
 
 
+- (IBAction)watchValue:(id)sender {
+    if ([_watchValueButton.titleLabel.text isEqualToString:@"开始监控"]) {
+        NSLog(@"");
+        [_watchValueButton setTitle:@"停止监控" forState:UIControlStateNormal];
+    } else {
+        NSLog(@"");
+        [_watchValueButton setTitle:@"开始监控" forState:UIControlStateNormal];
+    }
+}
 @end

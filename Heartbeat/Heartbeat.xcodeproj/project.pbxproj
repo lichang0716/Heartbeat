@@ -13,6 +13,7 @@
 		5CFE5C441DE72D2F003CF250 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CFE5C421DE72D2F003CF250 /* Main.storyboard */; };
 		5CFE5C461DE72D2F003CF250 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CFE5C451DE72D2F003CF250 /* Assets.xcassets */; };
 		5CFE5C491DE72D2F003CF250 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CFE5C471DE72D2F003CF250 /* LaunchScreen.storyboard */; };
+		5CFE5C521DE73990003CF250 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFE5C511DE73990003CF250 /* SettingViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		5CFE5C451DE72D2F003CF250 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5CFE5C481DE72D2F003CF250 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5CFE5C4A1DE72D2F003CF250 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5CFE5C501DE73990003CF250 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		5CFE5C511DE73990003CF250 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +65,8 @@
 				5CFE5C3D1DE72D2F003CF250 /* AppDelegate.m */,
 				5CFE5C3F1DE72D2F003CF250 /* ViewController.h */,
 				5CFE5C401DE72D2F003CF250 /* ViewController.m */,
+				5CFE5C501DE73990003CF250 /* SettingViewController.h */,
+				5CFE5C511DE73990003CF250 /* SettingViewController.m */,
 				5CFE5C421DE72D2F003CF250 /* Main.storyboard */,
 				5CFE5C451DE72D2F003CF250 /* Assets.xcassets */,
 				5CFE5C471DE72D2F003CF250 /* LaunchScreen.storyboard */,
@@ -154,6 +159,7 @@
 				5CFE5C411DE72D2F003CF250 /* ViewController.m in Sources */,
 				5CFE5C3E1DE72D2F003CF250 /* AppDelegate.m in Sources */,
 				5CFE5C3B1DE72D2F003CF250 /* main.m in Sources */,
+				5CFE5C521DE73990003CF250 /* SettingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
