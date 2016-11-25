@@ -19,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C6533AE1DE80B9100DEE649 /* Defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
 		5CFE5C361DE72D2F003CF250 /* Heartbeat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Heartbeat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CFE5C3A1DE72D2F003CF250 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5CFE5C3C1DE72D2F003CF250 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -83,6 +84,7 @@
 				5CFE5C391DE72D2F003CF250 /* Supporting Files */,
 				5CFE5C571DE740E4003CF250 /* HealthKitManage.h */,
 				5CFE5C581DE740E4003CF250 /* HealthKitManage.m */,
+				5C6533AE1DE80B9100DEE649 /* Defines.h */,
 			);
 			path = Heartbeat;
 			sourceTree = "<group>";
@@ -345,6 +347,7 @@
 				5CFE5C4F1DE72D2F003CF250 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

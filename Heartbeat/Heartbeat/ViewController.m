@@ -9,6 +9,9 @@
 #import "ViewController.h"
 #import <HealthKit/HealthKit.h>
 #import <AudioToolbox/AudioToolbox.h>
+#import "Defines.h"
+
+
 @interface ViewController () {
     BOOL shakePhone;
 }
@@ -78,7 +81,8 @@
 }
 
 - (void)setLabelColor:(NSUInteger)heartReat {
-    NSInteger settedValue = 90;
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSInteger settedValue = [userDefaults integerForKey:SETTED_VALUE];
     if (heartReat > settedValue) {
         _currentValueLabel.textColor = [UIColor redColor];
         if (shakePhone) {

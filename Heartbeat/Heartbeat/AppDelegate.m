@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Defines.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setInteger:160 forKey:SETTED_VALUE];
+    [userDefaults synchronize];
     return YES;
 }
 

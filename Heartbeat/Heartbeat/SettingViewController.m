@@ -7,8 +7,12 @@
 //
 
 #import "SettingViewController.h"
+#import "Defines.h"
 
-@interface SettingViewController ()
+@interface SettingViewController (){
+    NSInteger settedValue;
+    NSUserDefaults *userDefaults;
+}
 
 @end
 
@@ -18,7 +22,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    _defaultTopValueTextField.text = @"160";
+    userDefaults = [NSUserDefaults standardUserDefaults];
+    settedValue = [userDefaults integerForKey:SETTED_VALUE];
+    if (settedValue < 1) {
+        _defaultTopValueTextField.text = @"160";
+    } else {
+        _defaultTopValueTextField.text = [NSString stringWithFormat:@"%ld", settedValue];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,5 +48,8 @@
 
 - (IBAction)saveValue:(id)sender {
     NSLog(@"点击保存数值");
+    [userDefaults setInteger:[_defaultTopValueTextField.text integerValue] forKey:SETTED_VALUE];
+    [userDefaults synchronize];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 @end
