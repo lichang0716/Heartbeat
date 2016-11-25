@@ -89,7 +89,7 @@
             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         }
     } else {
-        _currentValueLabel.textColor = [UIColor greenColor];
+        _currentValueLabel.textColor = [UIColor colorWithRed:78/255.0 green:148/255.0 blue:7/255.0 alpha:1];
     }
 }
 
