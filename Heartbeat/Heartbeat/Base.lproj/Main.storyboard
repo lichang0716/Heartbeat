@@ -21,17 +21,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ZE-kd-E3d">
-                                <rect key="frame" x="110" y="171" width="193" height="120"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="70"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ZE-kd-E3d">
+                                <rect key="frame" x="187.5" y="172" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="150"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4aY-6D-m2O">
                                 <rect key="frame" x="136" y="445" width="102" height="42"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="25"/>
-                                <state key="normal" title="开始监控"/>
+                                <state key="normal" title="震动监控"/>
                                 <connections>
                                     <action selector="watchValue:" destination="BYZ-38-t0r" eventType="touchUpInside" id="M0U-SP-fq2"/>
                                 </connections>
@@ -40,6 +39,8 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4aY-6D-m2O" secondAttribute="bottom" constant="180" id="Hto-3p-OGj"/>
+                            <constraint firstItem="1ZE-kd-E3d" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="108" id="e9e-2v-shP"/>
+                            <constraint firstItem="1ZE-kd-E3d" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eZO-Qn-PfZ"/>
                             <constraint firstItem="4aY-6D-m2O" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="oqU-CQ-HJt"/>
                         </constraints>
                     </view>
