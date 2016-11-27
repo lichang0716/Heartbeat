@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C99D3E51DEADA4E00650D80 /* greenHeart@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C99D3E31DEADA4E00650D80 /* greenHeart@2x.jpg */; };
+		5C99D3E61DEADA4E00650D80 /* redHeart@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C99D3E41DEADA4E00650D80 /* redHeart@2x.jpg */; };
 		5CFE5C3B1DE72D2F003CF250 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFE5C3A1DE72D2F003CF250 /* main.m */; };
 		5CFE5C3E1DE72D2F003CF250 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFE5C3D1DE72D2F003CF250 /* AppDelegate.m */; };
 		5CFE5C411DE72D2F003CF250 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFE5C401DE72D2F003CF250 /* ViewController.m */; };
@@ -20,6 +22,8 @@
 
 /* Begin PBXFileReference section */
 		5C6533AE1DE80B9100DEE649 /* Defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
+		5C99D3E31DEADA4E00650D80 /* greenHeart@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "greenHeart@2x.jpg"; sourceTree = "<group>"; };
+		5C99D3E41DEADA4E00650D80 /* redHeart@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "redHeart@2x.jpg"; sourceTree = "<group>"; };
 		5CFE5C361DE72D2F003CF250 /* Heartbeat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Heartbeat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CFE5C3A1DE72D2F003CF250 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5CFE5C3C1DE72D2F003CF250 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -77,6 +81,8 @@
 				5CFE5C401DE72D2F003CF250 /* ViewController.m */,
 				5CFE5C501DE73990003CF250 /* SettingViewController.h */,
 				5CFE5C511DE73990003CF250 /* SettingViewController.m */,
+				5C99D3E31DEADA4E00650D80 /* greenHeart@2x.jpg */,
+				5C99D3E41DEADA4E00650D80 /* redHeart@2x.jpg */,
 				5CFE5C421DE72D2F003CF250 /* Main.storyboard */,
 				5CFE5C451DE72D2F003CF250 /* Assets.xcassets */,
 				5CFE5C471DE72D2F003CF250 /* LaunchScreen.storyboard */,
@@ -171,7 +177,9 @@
 			files = (
 				5CFE5C491DE72D2F003CF250 /* LaunchScreen.storyboard in Resources */,
 				5CFE5C461DE72D2F003CF250 /* Assets.xcassets in Resources */,
+				5C99D3E51DEADA4E00650D80 /* greenHeart@2x.jpg in Resources */,
 				5CFE5C441DE72D2F003CF250 /* Main.storyboard in Resources */,
+				5C99D3E61DEADA4E00650D80 /* redHeart@2x.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

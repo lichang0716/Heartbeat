@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *currentValueLabel;
 @property (weak, nonatomic) IBOutlet UIButton *watchValueButton;
+@property (weak, nonatomic) IBOutlet UIImageView *heartImageView;
 - (IBAction)watchValue:(id)sender;
 
 @end

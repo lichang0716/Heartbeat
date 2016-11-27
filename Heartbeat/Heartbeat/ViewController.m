@@ -14,6 +14,8 @@
 
 @interface ViewController () {
     BOOL shakePhone;
+    BOOL shineIcon;
+    NSInteger settedValue;
 }
 @property (nonatomic, strong) HKHealthStore *healthStore;
 
@@ -42,12 +44,20 @@
             
             NSTimer *timer = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(readHeartbeatValue) userInfo:nil repeats:YES];
             [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
+            NSTimer *iconTimer = [NSTimer timerWithTimeInterval:0.8 target:self selector:@selector(setIconStatus) userInfo:nil repeats:YES];
+            [[NSRunLoop mainRunLoop] addTimer:iconTimer forMode:NSDefaultRunLoopMode];
         } else {
             NSLog(@"获取权限失败");
         }
     }];
     
     shakePhone = NO;
+    shineIcon = NO;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    settedValue = [userDefaults integerForKey:SETTED_VALUE];
 }
 
 
@@ -81,15 +91,15 @@
 }
 
 - (void)setLabelColor:(NSUInteger)heartReat {
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSInteger settedValue = [userDefaults integerForKey:SETTED_VALUE];
     if (heartReat > settedValue) {
         _currentValueLabel.textColor = [UIColor redColor];
+        _heartImageView.image = [UIImage imageNamed:@"redHeart.jpg"];
         if (shakePhone) {
             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         }
     } else {
         _currentValueLabel.textColor = [UIColor colorWithRed:78/255.0 green:148/255.0 blue:7/255.0 alpha:1];
+        _heartImageView.image = [UIImage imageNamed:@"greenHeart.jpg"];
     }
 }
 
@@ -104,6 +114,16 @@
         NSLog(@"");
         shakePhone = NO;
         [_watchValueButton setTitle:@"震动监控" forState:UIControlStateNormal];
+    }
+}
+
+- (void)setIconStatus {
+    if (shineIcon) {
+        _heartImageView.alpha = 1.0;
+        shineIcon = NO;
+    } else {
+        _heartImageView.alpha = 0.0;
+        shineIcon = YES;
     }
 }
 
