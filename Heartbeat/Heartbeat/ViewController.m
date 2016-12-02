@@ -261,7 +261,7 @@
     [lineChart updateChartData:@[data01, data02]];
     _heartRateScrollView.contentSize = lineChart.bounds.size;
     [_heartRateScrollView addSubview:lineChart];
-    if (heartRateArr.count > 20) {
+    if (heartRateArr.count > 15) {
         [_heartRateScrollView setContentOffset:CGPointMake(ScreenWidth, 0) animated:YES];
     }
 }
