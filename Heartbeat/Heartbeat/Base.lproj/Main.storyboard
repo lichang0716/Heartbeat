@@ -22,35 +22,108 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ZE-kd-E3d">
-                                <rect key="frame" x="187.5" y="144" width="0.0" height="0.0"/>
+                                <rect key="frame" x="187.5" y="354" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="180"/>
                                 <color key="textColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4aY-6D-m2O">
-                                <rect key="frame" x="136" y="525" width="102" height="42"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="25"/>
+                                <rect key="frame" x="154" y="615" width="66" height="32"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                 <state key="normal" title="震动监控"/>
                                 <connections>
                                     <action selector="watchValue:" destination="BYZ-38-t0r" eventType="touchUpInside" id="M0U-SP-fq2"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JQj-YI-eFg">
-                                <rect key="frame" x="137" y="164" width="100" height="100"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBO-fj-p2V">
+                                <rect key="frame" x="0.0" y="64" width="375" height="220"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="Aqq-vE-Vtu"/>
-                                    <constraint firstAttribute="width" constant="100" id="fqe-eb-YT6"/>
+                                    <constraint firstAttribute="height" constant="220" id="TBM-MA-GlU"/>
                                 </constraints>
-                            </imageView>
+                            </scrollView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="最高心率：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dhr-l6-lqk">
+                                <rect key="frame" x="50" y="292" width="71.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="180" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TR9-Sg-vaM">
+                                <rect key="frame" x="118.5" y="290" width="29" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="超过比例：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07I-4N-hEU">
+                                <rect key="frame" x="201.5" y="292" width="72" height="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rdW-pd-vCI">
+                                <rect key="frame" x="270.5" y="290" width="33" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hsr-7d-wab">
+                                <rect key="frame" x="42" y="615" width="82" height="32"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                <state key="normal" title="重置心率图"/>
+                                <connections>
+                                    <action selector="resetLineView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yRm-FF-RIi"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4mi-J2-JP1">
+                                <rect key="frame" x="250" y="615" width="66" height="32"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                <state key="normal" title="生成图片"/>
+                                <connections>
+                                    <action selector="getLineImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="orQ-sO-xNV"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="teU-aR-N7c">
+                                <rect key="frame" x="20" y="326" width="335" height="1"/>
+                                <color key="backgroundColor" red="0.7725490196" green="0.76470588240000004" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="1aT-mR-uti"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eJr-DD-nJU">
+                                <rect key="frame" x="20" y="594" width="335" height="1"/>
+                                <color key="backgroundColor" red="0.7725490196" green="0.76470588240000004" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="8h7-Z2-12A"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="L2t-Xr-zJc"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4aY-6D-m2O" secondAttribute="bottom" constant="100" id="Hto-3p-OGj"/>
-                            <constraint firstItem="1ZE-kd-E3d" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="80" id="e9e-2v-shP"/>
+                            <constraint firstItem="rdW-pd-vCI" firstAttribute="leading" secondItem="07I-4N-hEU" secondAttribute="trailing" constant="-3" id="7et-Ya-HZn"/>
+                            <constraint firstAttribute="trailing" secondItem="bBO-fj-p2V" secondAttribute="trailing" id="Dn8-pF-UoO"/>
+                            <constraint firstItem="4aY-6D-m2O" firstAttribute="leading" secondItem="Hsr-7d-wab" secondAttribute="trailing" constant="30" id="G4d-0J-JdB"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4aY-6D-m2O" secondAttribute="bottom" constant="20" id="Hto-3p-OGj"/>
+                            <constraint firstItem="4aY-6D-m2O" firstAttribute="top" secondItem="eJr-DD-nJU" secondAttribute="bottom" constant="20" id="KNE-Zb-mPC"/>
+                            <constraint firstAttribute="trailing" secondItem="teU-aR-N7c" secondAttribute="trailing" constant="20" id="LKb-3I-gyA"/>
+                            <constraint firstItem="bBO-fj-p2V" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Saz-EN-UZ7"/>
+                            <constraint firstItem="teU-aR-N7c" firstAttribute="top" secondItem="rdW-pd-vCI" secondAttribute="bottom" constant="15" id="UG7-tE-hwg"/>
+                            <constraint firstItem="4mi-J2-JP1" firstAttribute="leading" secondItem="4aY-6D-m2O" secondAttribute="trailing" constant="30" id="XcI-Ry-gue"/>
+                            <constraint firstItem="TR9-Sg-vaM" firstAttribute="leading" secondItem="Dhr-l6-lqk" secondAttribute="trailing" constant="-3" id="ZQJ-xz-BUf"/>
+                            <constraint firstItem="eJr-DD-nJU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="ZpV-tB-D8A"/>
+                            <constraint firstItem="teU-aR-N7c" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="bwZ-J6-mwY"/>
+                            <constraint firstItem="07I-4N-hEU" firstAttribute="centerY" secondItem="TR9-Sg-vaM" secondAttribute="centerY" id="cE2-ll-LKO"/>
+                            <constraint firstItem="1ZE-kd-E3d" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="290" id="e9e-2v-shP"/>
                             <constraint firstItem="1ZE-kd-E3d" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eZO-Qn-PfZ"/>
-                            <constraint firstItem="JQj-YI-eFg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nNU-nk-zSw"/>
+                            <constraint firstItem="bBO-fj-p2V" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="fBF-z4-4p8"/>
+                            <constraint firstItem="Dhr-l6-lqk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="50" id="fdl-4V-Did"/>
+                            <constraint firstItem="TR9-Sg-vaM" firstAttribute="centerY" secondItem="Dhr-l6-lqk" secondAttribute="centerY" id="hvd-Zz-rDo"/>
+                            <constraint firstItem="Hsr-7d-wab" firstAttribute="centerY" secondItem="4aY-6D-m2O" secondAttribute="centerY" id="id3-wg-Fhu"/>
+                            <constraint firstItem="rdW-pd-vCI" firstAttribute="centerY" secondItem="07I-4N-hEU" secondAttribute="centerY" id="j6c-Qg-b5R"/>
+                            <constraint firstItem="07I-4N-hEU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="50" id="nIC-G4-DPp"/>
                             <constraint firstItem="4aY-6D-m2O" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="oqU-CQ-HJt"/>
-                            <constraint firstItem="JQj-YI-eFg" firstAttribute="top" secondItem="1ZE-kd-E3d" secondAttribute="bottom" constant="20" id="z5N-ZF-M8l"/>
+                            <constraint firstItem="4mi-J2-JP1" firstAttribute="centerY" secondItem="4aY-6D-m2O" secondAttribute="centerY" id="q6n-ZJ-mqj"/>
+                            <constraint firstAttribute="trailing" secondItem="eJr-DD-nJU" secondAttribute="trailing" constant="20" id="tHn-oa-gSz"/>
+                            <constraint firstItem="Dhr-l6-lqk" firstAttribute="top" secondItem="bBO-fj-p2V" secondAttribute="bottom" constant="8" id="wlL-hd-AcC"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Heartbeat" id="Wec-li-g6D">
@@ -62,13 +135,15 @@
                     </navigationItem>
                     <connections>
                         <outlet property="currentValueLabel" destination="1ZE-kd-E3d" id="qY3-iT-bSP"/>
-                        <outlet property="heartImageView" destination="JQj-YI-eFg" id="OAa-y9-x7i"/>
+                        <outlet property="heartRateScrollView" destination="bBO-fj-p2V" id="2nG-2c-dmh"/>
+                        <outlet property="highestRateLabel" destination="TR9-Sg-vaM" id="Ech-Kl-3Lr"/>
+                        <outlet property="percentOverLine" destination="rdW-pd-vCI" id="JQ0-rD-wUq"/>
                         <outlet property="watchValueButton" destination="4aY-6D-m2O" id="wCj-uY-u3V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="918" y="139"/>
+            <point key="canvasLocation" x="917.60000000000002" y="138.98050974512745"/>
         </scene>
         <!--Setting-->
         <scene sceneID="5Up-QJ-GgN">

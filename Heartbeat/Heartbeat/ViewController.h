@@ -12,8 +12,13 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *currentValueLabel;
 @property (weak, nonatomic) IBOutlet UIButton *watchValueButton;
-@property (weak, nonatomic) IBOutlet UIImageView *heartImageView;
+@property (weak, nonatomic) IBOutlet UIScrollView *heartRateScrollView;
+@property (weak, nonatomic) IBOutlet UILabel *highestRateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *percentOverLine;
+
 - (IBAction)watchValue:(id)sender;
+- (IBAction)resetLineView:(id)sender;
+- (IBAction)getLineImage:(id)sender;
 
 @end
 

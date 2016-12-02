@@ -18,9 +18,11 @@
 		5CFE5C521DE73990003CF250 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFE5C511DE73990003CF250 /* SettingViewController.m */; };
 		5CFE5C561DE740BC003CF250 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CFE5C551DE740BC003CF250 /* HealthKit.framework */; };
 		5CFE5C591DE740E4003CF250 /* HealthKitManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFE5C581DE740E4003CF250 /* HealthKitManage.m */; };
+		980CB1E2388AD5D3A8D00BC6 /* libPods-Heartbeat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66F80B2C12710381F7C098A1 /* libPods-Heartbeat.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1286E945BC94B2F69BDDD961 /* Pods-Heartbeat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Heartbeat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Heartbeat/Pods-Heartbeat.debug.xcconfig"; sourceTree = "<group>"; };
 		5C6533AE1DE80B9100DEE649 /* Defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
 		5C99D3E31DEADA4E00650D80 /* greenHeart@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "greenHeart@2x.jpg"; sourceTree = "<group>"; };
 		5C99D3E41DEADA4E00650D80 /* redHeart@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "redHeart@2x.jpg"; sourceTree = "<group>"; };
@@ -40,6 +42,8 @@
 		5CFE5C551DE740BC003CF250 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		5CFE5C571DE740E4003CF250 /* HealthKitManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthKitManage.h; sourceTree = "<group>"; };
 		5CFE5C581DE740E4003CF250 /* HealthKitManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthKitManage.m; sourceTree = "<group>"; };
+		66F80B2C12710381F7C098A1 /* libPods-Heartbeat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Heartbeat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8234A94214EB709D719E02F /* Pods-Heartbeat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Heartbeat.release.xcconfig"; path = "Pods/Target Support Files/Pods-Heartbeat/Pods-Heartbeat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +52,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CFE5C561DE740BC003CF250 /* HealthKit.framework in Frameworks */,
+				980CB1E2388AD5D3A8D00BC6 /* libPods-Heartbeat.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +65,7 @@
 				5CFE5C381DE72D2F003CF250 /* Heartbeat */,
 				5CFE5C371DE72D2F003CF250 /* Products */,
 				5CFE5C541DE740BC003CF250 /* Frameworks */,
+				8BA6CE32827257BA67725672 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -107,8 +113,18 @@
 			isa = PBXGroup;
 			children = (
 				5CFE5C551DE740BC003CF250 /* HealthKit.framework */,
+				66F80B2C12710381F7C098A1 /* libPods-Heartbeat.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8BA6CE32827257BA67725672 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1286E945BC94B2F69BDDD961 /* Pods-Heartbeat.debug.xcconfig */,
+				F8234A94214EB709D719E02F /* Pods-Heartbeat.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -118,9 +134,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5CFE5C4D1DE72D2F003CF250 /* Build configuration list for PBXNativeTarget "Heartbeat" */;
 			buildPhases = (
+				1783CA107480937EAC2009C1 /* Check Pods Manifest.lock */,
 				5CFE5C321DE72D2F003CF250 /* Sources */,
 				5CFE5C331DE72D2F003CF250 /* Frameworks */,
 				5CFE5C341DE72D2F003CF250 /* Resources */,
+				B733C2DC2D6CBF493E7F5F95 /* Embed Pods Frameworks */,
+				1E49978B0C5BD0982357FF70 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -184,6 +203,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1783CA107480937EAC2009C1 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		1E49978B0C5BD0982357FF70 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Heartbeat/Pods-Heartbeat-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B733C2DC2D6CBF493E7F5F95 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Heartbeat/Pods-Heartbeat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5CFE5C321DE72D2F003CF250 /* Sources */ = {
@@ -310,6 +377,7 @@
 		};
 		5CFE5C4E1DE72D2F003CF250 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1286E945BC94B2F69BDDD961 /* Pods-Heartbeat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Heartbeat/Heartbeat.entitlements;
@@ -324,6 +392,7 @@
 		};
 		5CFE5C4F1DE72D2F003CF250 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F8234A94214EB709D719E02F /* Pods-Heartbeat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Heartbeat/Heartbeat.entitlements;

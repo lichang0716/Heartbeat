@@ -11,5 +11,7 @@
 
 #define SETTED_VALUE        @"settedValue"
 
+#define ScreenWidth         [UIScreen mainScreen].bounds.size.width
+
 
 #endif /* Defines_h */
