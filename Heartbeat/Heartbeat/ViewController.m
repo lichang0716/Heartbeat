@@ -20,6 +20,10 @@
     NSMutableArray *settedRateArr;
     NSMutableArray *timeArr;
     PNLineChart *lineChart;
+    NSInteger highestRate;
+    NSInteger sumCount;
+    NSInteger overCount;
+    float rateOverPercent;
     
 }
 @property (nonatomic, strong) HKHealthStore *healthStore;
@@ -30,6 +34,8 @@
 @synthesize currentValueLabel = _currentValueLabel;
 @synthesize watchValueButton = _watchValueButton;
 @synthesize heartRateScrollView = _heartRateScrollView;
+@synthesize highestRateLabel = _highestRateLabel;
+@synthesize percentOverLine = _percentOverLine;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -60,6 +66,11 @@
     heartRateArr = [[NSMutableArray alloc] init];
     settedRateArr = [[NSMutableArray alloc] init];
     timeArr = [[NSMutableArray alloc] init];
+    
+    highestRate = 0;
+    sumCount = 0;
+    overCount = 0;
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -99,6 +110,25 @@
                 if (heartRateArr.count > 1) {
                     [self updateRateView];
                 }
+                // 设置并显示最高心率
+                if (highestRate == 0) {
+                    highestRate = heartbeatStr.integerValue;
+                    _highestRateLabel.text = [NSString stringWithFormat:@"%ld", highestRate];
+                } else {
+                    if (highestRate < heartbeatStr.integerValue) {
+                        highestRate = heartbeatStr.integerValue;
+                        _highestRateLabel.text = [NSString stringWithFormat:@"%ld", highestRate];
+                    }
+                }
+                // 设置显示超过比例
+                sumCount = sumCount + 1;
+                if (heartbeatStr.integerValue > settedValue) {
+                    overCount = overCount + 1;
+                }
+                rateOverPercent = (overCount*1.0)/(sumCount*1.0);
+                NSLog(@"overCount = %ld; sumCount = %ld", overCount, sumCount);
+                NSLog(@"rateOverPercent = %f", rateOverPercent);
+                _percentOverLine.text = [NSString stringWithFormat:@"%.1f%s", rateOverPercent * 100, "%"];
                 _currentValueLabel.text = [NSString stringWithFormat:@"%ld", [heartbeatStr integerValue]];
                 [self setLabelColor:[heartbeatStr integerValue]];
             }];
@@ -134,14 +164,85 @@
 }
 
 - (IBAction)resetLineView:(id)sender {
+    // 重置所有属性
+    [self drawRateView];
+    highestRate = 0;
+    sumCount = 0;
+    overCount = 0;
+    [heartRateArr removeAllObjects];
+    [timeArr removeAllObjects];
+    [settedRateArr removeAllObjects];
+    _percentOverLine.text = @"0%";
+    _highestRateLabel.text = @"0";
 }
 
 - (IBAction)getLineImage:(id)sender {
+    UIGraphicsBeginImageContextWithOptions([self getSavedImage].bounds.size, YES, 1);
+    [[self getSavedImage].layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *imageWantToSave = UIGraphicsGetImageFromCurrentImageContext();
+    UIImageWriteToSavedPhotosAlbum(imageWantToSave, self, @selector(image:didFinishSavingWithError:contextInfo:), NULL);
+    UIGraphicsEndImageContext();
+    lineChart.frame = CGRectMake(0, 20, lineChart.bounds.size.width, 200);
+}
+
+- (UIView *)getSavedImage {
+    UIView *viewWantToSave = [[UIView alloc] initWithFrame:CGRectMake(0, 0, lineChart.bounds.size.width, lineChart.bounds.size.width)];
+    viewWantToSave.backgroundColor = [UIColor whiteColor];
+    lineChart.frame = CGRectMake(0, 250, lineChart.bounds.size.width, lineChart.bounds.size.height);
+    [viewWantToSave addSubview:lineChart];
+    
+    UILabel *dateLabele = [[UILabel alloc] init];
+    dateLabele.font = [UIFont systemFontOfSize:18 weight:UIFontWeightLight];
+    NSString *str = [self getCurrentTime];
+    dateLabele.text = str;
+    dateLabele.textColor = [UIColor darkGrayColor];
+    dateLabele.numberOfLines = 1;
+    dateLabele.lineBreakMode = NSLineBreakByTruncatingTail;
+    CGSize maximumLabelSize = CGSizeMake(100, 9999);
+    CGSize expectSize = [dateLabele sizeThatFits:maximumLabelSize];
+    dateLabele.frame = CGRectMake(lineChart.bounds.size.width - expectSize.width - 20, lineChart.bounds.size.width - expectSize.height - 30, expectSize.width, expectSize.height);
+    [viewWantToSave addSubview:dateLabele];
+    
+    UILabel *scoreLabele = [[UILabel alloc] init];
+    scoreLabele.font = [UIFont systemFontOfSize:18 weight:UIFontWeightLight];
+    NSString *scoreStr = [NSString stringWithFormat:@"%ld / %ld / %@", settedValue, highestRate, [NSString stringWithFormat:@"%.1f%s", rateOverPercent * 100, "%"]];
+    scoreLabele.text = scoreStr;
+    scoreLabele.textColor = [UIColor darkGrayColor];
+    scoreLabele.numberOfLines = 1;
+    scoreLabele.lineBreakMode = NSLineBreakByTruncatingTail;
+    CGSize scoreExpectSize = [scoreLabele sizeThatFits:maximumLabelSize];
+    scoreLabele.frame = CGRectMake(dateLabele.frame.origin.x - scoreExpectSize.width - 50, lineChart.bounds.size.width - expectSize.height - 30, scoreExpectSize.width, scoreExpectSize.height);
+    [viewWantToSave addSubview:scoreLabele];
+    
+    return viewWantToSave;
+}
+
+- (NSString *)getCurrentTime {
+    NSDate *currentDate = [NSDate date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"YY/MM/dd hh:mm:ss"];
+    NSString *dateString = [dateFormatter stringFromDate:currentDate];
+    return dateString;
+}
+
+- (void)image: (UIImage *) image didFinishSavingWithError: (NSError *) error contextInfo: (void *) contextInfo
+{
+    NSString *msg = nil ;
+    if(error != NULL){
+        msg = @"保存失败" ;
+    }else{
+        msg = @"保存成功" ;
+    }
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:msg preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确认"style:UIAlertActionStyleDefault handler:nil];
+    [alert addAction:okAction];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)drawRateView {
     [lineChart removeFromSuperview];
-    lineChart = [[PNLineChart alloc] initWithFrame:CGRectMake(0, 20, ScreenWidth * 3, 200.0)];
+    lineChart = [[PNLineChart alloc] initWithFrame:CGRectMake(0, 20, ScreenWidth * 2, 200.0)];
+    lineChart.chartMarginTop = 30.0;
     [lineChart setXLabels:timeArr];
     PNLineChartData *data01 = [self heartRateData];
     PNLineChartData *data02 = [self settedRateData];
@@ -149,6 +250,7 @@
     [lineChart strokeChart];
     _heartRateScrollView.contentSize = lineChart.bounds.size;
     [_heartRateScrollView addSubview:lineChart];
+    [_heartRateScrollView setContentOffset:CGPointMake(0, 0) animated:YES];
 }
 
 - (void)updateRateView {
@@ -159,7 +261,9 @@
     [lineChart updateChartData:@[data01, data02]];
     _heartRateScrollView.contentSize = lineChart.bounds.size;
     [_heartRateScrollView addSubview:lineChart];
-    
+    if (heartRateArr.count > 20) {
+        [_heartRateScrollView setContentOffset:CGPointMake(ScreenWidth, 0) animated:YES];
+    }
 }
 
 - (PNLineChartData *)heartRateData {
