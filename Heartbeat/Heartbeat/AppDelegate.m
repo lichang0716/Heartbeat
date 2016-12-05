@@ -22,8 +22,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setInteger:160 forKey:SETTED_VALUE];
-    [userDefaults synchronize];
+    if (![userDefaults valueForKey:FIRST_TIME_LAUNCH]) {
+        [userDefaults setValue:NOT_FITST_ANYMORE forKey:FIRST_TIME_LAUNCH];
+        [userDefaults setInteger:160 forKey:SETTED_VALUE];
+        [userDefaults synchronize];
+    }
     [Fabric with:@[[Crashlytics class]]];
     return YES;
 }

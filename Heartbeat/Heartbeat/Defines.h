@@ -13,5 +13,8 @@
 
 #define ScreenWidth         [UIScreen mainScreen].bounds.size.width
 
+#define FIRST_TIME_LAUNCH   @"firstTimeLaunch"
+#define NOT_FITST_ANYMORE  @"notFirstAnymore"
+
 
 #endif /* Defines_h */
