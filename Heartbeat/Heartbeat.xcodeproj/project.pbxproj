@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5C99D3E51DEADA4E00650D80 /* greenHeart@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C99D3E31DEADA4E00650D80 /* greenHeart@2x.jpg */; };
 		5C99D3E61DEADA4E00650D80 /* redHeart@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C99D3E41DEADA4E00650D80 /* redHeart@2x.jpg */; };
+		5CF5062B1DF54F9400A33E37 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF506291DF54F9400A33E37 /* Fabric.framework */; };
+		5CF5062C1DF54F9400A33E37 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF5062A1DF54F9400A33E37 /* Crashlytics.framework */; };
 		5CFE5C3B1DE72D2F003CF250 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFE5C3A1DE72D2F003CF250 /* main.m */; };
 		5CFE5C3E1DE72D2F003CF250 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFE5C3D1DE72D2F003CF250 /* AppDelegate.m */; };
 		5CFE5C411DE72D2F003CF250 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFE5C401DE72D2F003CF250 /* ViewController.m */; };
@@ -26,6 +28,8 @@
 		5C6533AE1DE80B9100DEE649 /* Defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
 		5C99D3E31DEADA4E00650D80 /* greenHeart@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "greenHeart@2x.jpg"; sourceTree = "<group>"; };
 		5C99D3E41DEADA4E00650D80 /* redHeart@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "redHeart@2x.jpg"; sourceTree = "<group>"; };
+		5CF506291DF54F9400A33E37 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		5CF5062A1DF54F9400A33E37 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		5CFE5C361DE72D2F003CF250 /* Heartbeat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Heartbeat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CFE5C3A1DE72D2F003CF250 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5CFE5C3C1DE72D2F003CF250 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -53,6 +57,8 @@
 			files = (
 				5CFE5C561DE740BC003CF250 /* HealthKit.framework in Frameworks */,
 				980CB1E2388AD5D3A8D00BC6 /* libPods-Heartbeat.a in Frameworks */,
+				5CF5062C1DF54F9400A33E37 /* Crashlytics.framework in Frameworks */,
+				5CF5062B1DF54F9400A33E37 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +103,8 @@
 				5CFE5C571DE740E4003CF250 /* HealthKitManage.h */,
 				5CFE5C581DE740E4003CF250 /* HealthKitManage.m */,
 				5C6533AE1DE80B9100DEE649 /* Defines.h */,
+				5CF506291DF54F9400A33E37 /* Fabric.framework */,
+				5CF5062A1DF54F9400A33E37 /* Crashlytics.framework */,
 			);
 			path = Heartbeat;
 			sourceTree = "<group>";
@@ -140,6 +148,7 @@
 				5CFE5C341DE72D2F003CF250 /* Resources */,
 				B733C2DC2D6CBF493E7F5F95 /* Embed Pods Frameworks */,
 				1E49978B0C5BD0982357FF70 /* Copy Pods Resources */,
+				5CF506281DF54F7500A33E37 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -234,6 +243,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Heartbeat/Pods-Heartbeat-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		5CF506281DF54F7500A33E37 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Heartbeat/Fabric.framework/run b1cb78065d2cc60203ea386a98f55d473b832607 5b835bb0c5c87d90529254fe00b91cbe82e392875b86873cad9e9c1829df64c4";
 		};
 		B733C2DC2D6CBF493E7F5F95 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -381,7 +403,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Heartbeat/Heartbeat.entitlements;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 8TVU93GBNX;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Heartbeat",
+				);
 				INFOPLIST_FILE = Heartbeat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -397,6 +424,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Heartbeat/Heartbeat.entitlements;
 				DEVELOPMENT_TEAM = 8TVU93GBNX;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Heartbeat",
+				);
 				INFOPLIST_FILE = Heartbeat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
