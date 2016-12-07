@@ -24,6 +24,7 @@
     NSInteger sumCount;
     NSInteger overCount;
     float rateOverPercent;
+    NSTimer *drawRateViewTimer;
     
 }
 @property (nonatomic, strong) HKHealthStore *healthStore;
@@ -60,6 +61,12 @@
             NSLog(@"获取权限失败");
         }
     }];
+    
+    drawRateViewTimer = [NSTimer scheduledTimerWithTimeInterval:60.0
+                                                          target:self
+                                                        selector:@selector(drawRateView)
+                                                        userInfo:nil
+                                                         repeats:YES];
     
     shakePhone = NO;
     
@@ -107,9 +114,9 @@
                 if (heartRateArr.count == 1) {
                     [self drawRateView];
                 }
-                if (heartRateArr.count > 1) {
-                    [self updateRateView];
-                }
+//                if (heartRateArr.count > 1) {
+//                    [self updateRateView];
+//                }
                 // 设置并显示最高心率
                 if (highestRate == 0) {
                     highestRate = heartbeatStr.integerValue;
@@ -186,6 +193,8 @@
 }
 
 - (UIView *)getSavedImage {
+    [self drawRateView];
+    
     UIView *viewWantToSave = [[UIView alloc] initWithFrame:CGRectMake(0, 0, lineChart.bounds.size.width, lineChart.bounds.size.width)];
     viewWantToSave.backgroundColor = [UIColor whiteColor];
     lineChart.frame = CGRectMake(0, 250, lineChart.bounds.size.width, lineChart.bounds.size.height);
@@ -240,6 +249,7 @@
 }
 
 - (void)drawRateView {
+    NSLog(@"开始画喽！！！！");
     [lineChart removeFromSuperview];
     lineChart = [[PNLineChart alloc] initWithFrame:CGRectMake(0, 20, ScreenWidth * 2, 200.0)];
     lineChart.chartMarginTop = 30.0;
@@ -251,20 +261,23 @@
     _heartRateScrollView.contentSize = lineChart.bounds.size;
     [_heartRateScrollView addSubview:lineChart];
     [_heartRateScrollView setContentOffset:CGPointMake(0, 0) animated:YES];
-}
-
-- (void)updateRateView {
-    [lineChart removeFromSuperview];
-    PNLineChartData *data01 = [self heartRateData];
-    PNLineChartData *data02 = [self settedRateData];
-    [lineChart setXLabels:timeArr];
-    [lineChart updateChartData:@[data01, data02]];
-    _heartRateScrollView.contentSize = lineChart.bounds.size;
-    [_heartRateScrollView addSubview:lineChart];
     if (heartRateArr.count > 15) {
         [_heartRateScrollView setContentOffset:CGPointMake(ScreenWidth, 0) animated:YES];
     }
 }
+
+//- (void)updateRateView {
+//    [lineChart removeFromSuperview];
+//    PNLineChartData *data01 = [self heartRateData];
+//    PNLineChartData *data02 = [self settedRateData];
+//    [lineChart setXLabels:timeArr];
+//    [lineChart updateChartData:@[data01, data02]];
+//    _heartRateScrollView.contentSize = lineChart.bounds.size;
+//    [_heartRateScrollView addSubview:lineChart];
+//    if (heartRateArr.count > 15) {
+//        [_heartRateScrollView setContentOffset:CGPointMake(ScreenWidth, 0) animated:YES];
+//    }
+//}
 
 - (PNLineChartData *)heartRateData {
     PNLineChartData *data01 = [PNLineChartData new];
